@@ -1,0 +1,26 @@
+{
+    "name": "jtony-polymer-study",
+    "version": "1.0.0",
+    "description": "Polymer study for we components use",
+    "main": "public_html/index.html",
+    "scripts": {
+        "start-heroku": "node server.js",
+        "start-server": "http-server public_html",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "3.4.7"
+    },
+    "devDependencies": {
+        "cucumber": "^1.3.1",
+        "jasmine-core": "*",
+        "karma": "*",
+        "karma-chrome-launcher": "*",
+        "karma-coverage": "*",
+        "karma-firefox-launcher": "*",
+        "karma-jasmine": "*",
+        "karma-junit-reporter": "*"
+    }
+}
