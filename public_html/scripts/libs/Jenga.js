@@ -132,3 +132,38 @@ function modifyZindex(el, increment) {
     el.style.zIndex = increment ? siblingsMaxMinZindex + 1 :
         (siblingZindex ? siblingsMaxMinZindex - 1 : 0);
 }
+
+//wraper jQuery
+(function(factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else {
+        factory(jQuery);
+    }
+}(function($) {
+    $.fn.bringToFront = function(options) {
+        options = options || {};
+
+        if (this[0]) {
+            Jenga.bringToFront(this[0], options.createStackingCtx, options.root);
+        }
+        return this;
+    };
+
+    $.fn.sendToBack = function(options) {
+        options = options || {};
+
+        if (this[0]) {
+            Jenga.sendToBack(this[0], options.createStackingCtx, options.root);
+        }
+        return this;
+    };
+
+    $.fn.isStackingCtx = function() {
+        return this[0] ? Jenga.isStackingCtx(this[0]) : false;
+    };
+
+    $.fn.getStackingCtx = function() {
+        return this[0] ? Jenga.getStackingCtx(this[0]) : undefined;
+    };
+}));

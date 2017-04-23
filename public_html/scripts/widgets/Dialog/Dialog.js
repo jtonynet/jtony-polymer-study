@@ -20,7 +20,9 @@
 
     Dialog.prototype.render = function() {};
 
-    Dialog.prototype.show = function() {};
+    Dialog.prototype.show = function() {
+        Jenga.bringToFront(this.$el[0]);
+    };
 
     Dialog.prototype.hide = function() {};
 
