@@ -9,6 +9,11 @@
         return this;
     }
 
+    Dialog.prototype.init = function(options) {
+        Voltron.prototype.init.call(this, options);
+        this.$el.css({ position: 'absolute' });
+    }
+
     Dialog.prototype.defaults = {};
 
     Dialog.prototype.events = {};
