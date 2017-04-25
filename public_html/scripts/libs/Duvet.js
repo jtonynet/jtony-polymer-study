@@ -140,3 +140,60 @@ Duvet.prototype.position = function(options) {
         position(this.el, this.options);
     }
 };
+
+function position(el, options) {
+    var pos = {};
+    var $parent = (el.parentNode.tagName === 'BODY' ? $(window) : $(el.parentNode));
+    var $el = $(el);
+
+    var scrollBarOffset = getScrollBarOffset(el.parentNode.tagName === 'BODY' ? window : el.parentNode);
+
+    if (el.parentNode !== el.offsetParent) {
+        el.parentNode.style.position = 'relative';
+    }
+
+    switch (options.align) {
+        case 'TL':
+            pos.top = 0;
+            pos.left = 0;
+            break;
+        case 'TR':
+            pos.top = 0;
+            pos.right = 0;
+            break;
+        case 'BL':
+            pos.top = 0;
+            pos.left = 0;
+            break;
+        case 'BR':
+            pos.top = 0;
+            pos.right = 0;
+            break;
+        case 'BC':
+            pos.top = 0;
+            pos.left = ((($parent.outerWidth() - scrollBarOffset.y - $el.outerWidth()) / 2) + $parent.scrollLeft());
+            break;
+        case 'TC':
+            pos.top = 0;
+            break;
+        case 'M':
+            pos.top = ((($parent.outerWidth() - scrollBarOffset.y - $el.outerWidth()) / 2) + $parent.scrollLeft());
+            pos.left = ((($parent.outerHeight() - scrollBarOffset.x - $el.outerHeight()) / 2) + $parent.scrollTop());
+            break;
+    }
+
+    pos.left = (pos.left > 0 ? pos.left : 0);
+    pos.top = (pos.top > 0 ? pos.top : 0);
+
+    $el.css($.extend({
+        position: 'absolute',
+        display: 'block'
+    }, pos));
+
+    if (options.fixed && options.align == 'M' && !options.bound) {
+        options.bound = true;
+        bindListeners($parent, function() {
+            position(el, options);
+        });
+    }
+}
