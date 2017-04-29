@@ -4,7 +4,7 @@
         "José Antonio <jtony.net@gmail.com>"
     ],
     "description": "bower-installer",
-    "main": "index.html",
+    "main": "public_html/index.html",
     "license": "MIT",
     "homepage": "",
     "private": true,
