@@ -2,7 +2,7 @@
     "name": "jtony-polymer-study",
     "version": "1.0.0",
     "description": "Polymer study for we components use",
-    "main": "public_html/index.html",
+    "main": "server.js",
     "scripts": {
         "start-heroku": "node server.js",
         "start-server": "http-server public_html",

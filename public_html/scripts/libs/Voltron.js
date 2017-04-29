@@ -1,6 +1,6 @@
-Super.prototype.doSomething = function() {
+/*Super.prototype.doSomething = function() {
     Base.prototype.doSomething.call(this);
-};
+};*/
 
 (function(root, $) {
     var delegateEventSplitter = /^(\S+)\s*(.*)$/;
