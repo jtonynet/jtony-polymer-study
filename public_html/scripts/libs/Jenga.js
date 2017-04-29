@@ -133,6 +133,87 @@ function modifyZindex(el, increment) {
         (siblingZindex ? siblingsMaxMinZindex - 1 : 0);
 }
 
+function getMargins(el) {
+    var $el = $(el);
+    var marginTop = parseInt($el.css('margin-top'), 10);
+    var marginLeft = parseInt($el.css('margin-left'), 10);
+
+    return {
+        top: isNaN(marginTop) ? 0 : marginTop,
+        left: isNaN(marginLeft) ? 0 : marginLeft
+    };
+}
+
+function align(el, options) {
+    var alignToElDim = getDimensions(options.alignToEl);
+    var css = { display: 'block', visibility: 'visible', position: 'absolute' };
+    var $el = $(el);
+    var parentAlignToElMargins = getMargins(options.alignToEl.parentNode);
+
+    $el.css({
+        visibility: 'hidden',
+        display: 'block',
+        'z-index': -1000
+    });
+
+    var elDim = getDimensions(el);
+
+    if (options.alignToEl.parentNode !== options.alignToEl.offsetParent) {
+        options.alignToEl.parentNode.style.position = 'relative';
+    }
+
+    switch (options.align) {
+        case 'TL':
+            css.top = (alignToElDim.top - elDim.height) - parentAlignToElMargins.top;
+            css.left = alignToElDim.left - parentAlignToElMargins.left;
+            break;
+        case 'TR':
+            css.top = alignToElDim.top - elDim.height;
+            css.left = alignToElDim.right - elDim.width;
+            break;
+        case 'BL':
+            css.top = alignToElDim.bottom - parentAlignToElMargins.top;
+            css.left = alignToElDim.left - parentAlignToElMargins.left;
+            break;
+        case 'BR':
+            css.top = alignToElDim.bottom - parentAlignToElMargins.top;
+            css.left = (alignToElDim.right - elDim.width) - parentAlignToElMargins.left;
+            break;
+        case 'BC':
+            css.top = alignToElDim.bottom - parentAlignToElMargins.top;
+            css.left = (((alignToElDim.width - elDim.width) / 2) + alignToElDim.left) - parentAlignToElMargins.left;
+            break;
+        case 'TC':
+            css.top = (alignToElDim.top - elDim.height) - parentAlignToElMargins.top;
+            css.left = (((alignToElDim.width - elDim.width) / 2) + alignToElDim.left) - parentAlignToElMargins.left;
+            break;
+        case 'M':
+            css.top = (alignToElDim.top - elDim.height) - parentAlignToElMargins.top;
+            css.left = alignToElDim.left - parentAlignToElMargins.left;
+            break;
+    }
+
+    jenga.bringToFront(el, true);
+    $el.css(css);
+
+    /*
+    pos.left = pos.left > 0 ? pos.left : 0;
+    pos.top = pos.top > 0 ? pos.top : 0;
+
+    $el.css($.extend({
+        position: absolute,
+        display: block
+    }, pos));
+
+    if (options.fixed && options.align == 'M' && !options.bound) {
+        options.bound = true;
+        bindListeners($parent, function() {
+            position(el, options);
+        });
+    }
+    */
+}
+
 //wraper jQuery
 (function(factory) {
     if (typeof define === 'function' && define.amd) {

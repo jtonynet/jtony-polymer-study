@@ -48,11 +48,11 @@ function getScrollbarWidth(parentEl) {
     };
 
     var $inner = $('<div>test</div>').css(innerCss);
-    var $outer = $('<div></div>').css(outerCss.append($inner));
+    var $outer = $('<div></div>').css(outerCss).append($inner);
     var innerEl = $inner[0];
     var outerEl = $outer[0];
 
-    $(parent || 'body').append(outerEl);
+    $(parentEl || 'body').append(outerEl);
     var innerWidth = innerEl.offsetWidth;
     $outer.css('overflow', 'scroll');
     var outerWidth = $outer[0].clientWidth;
