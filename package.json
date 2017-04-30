@@ -16,7 +16,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "bower": "*",
+        "bower": "1.7.9",
         "express": "3.4.7"
     },
     "devDependencies": {
