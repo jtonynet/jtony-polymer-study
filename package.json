@@ -3,9 +3,6 @@
     "version": "1.0.0",
     "description": "Polymer study for we components use",
     "main": "server.js",
-    "engines": {
-        "node": "6.10.2"
-    },
     "scripts": {
         "start-heroku": "node server.js",
         "start-server": "http-server public_html",
