@@ -7,11 +7,12 @@
         "start-heroku": "node server.js",
         "start-server": "http-server public_html",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "preinstall": "bower install"
+        "postinstall": "node_modules/bower/bin/bower install"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "bower": "1.2.6",
         "express": "3.4.7"
     },
     "devDependencies": {
