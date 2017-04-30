@@ -24,12 +24,19 @@
             padding: 10px;
             overflow: auto;
         }
+        
+        .drag-handle {
+            cursor: move
+        }
     </style>
 </head>
 
 <body>
     <div class="modal-overlay"></div>
     <div class="modal-content">I am the modal content. Fear me.</div>
+    <div class="draggable">AA
+        <div class="drag-handle">BBBB</div>
+    </div>
 </body>
 
 </html>
@@ -40,3 +47,11 @@
 <script src="/scripts/libs/Jenga.js"></script>
 <script src="/scripts/libs/Duvet.js"></script>
 <script src="/scripts/libs/Shamen.js"></script>
+
+<script>
+    $('document').ready(function() {
+        $('draggable').on('mousedown.draggable,', 'drag-handle', function(e) {
+
+        });
+    });
+</script>

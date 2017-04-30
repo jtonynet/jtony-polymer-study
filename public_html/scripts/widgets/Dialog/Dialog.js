@@ -12,7 +12,15 @@
         }
 
         Voltron.call(this, options);
-        this.overlay = new Duvet(this.$el[0]);
+
+        if (options.draggable) {
+            this.shamen = new Shamen(this.$el[0], { dragHandle: '#title' });
+        }
+
+        this.overlay = new Duvet(this.$el[0], {
+            fixed: options.draggable ? false : true
+        });
+
         return this;
     }
 
@@ -33,6 +41,11 @@
 
     Dialog.prototype.destroy = function() {
         this.overlay.destroy();
+
+        if (this.shamen) {
+            this.shamen.destroy();
+        }
+
         Voltron.prototype.destroy.call(this);
     }
 
