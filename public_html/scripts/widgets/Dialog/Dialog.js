@@ -17,6 +17,10 @@
             this.shamen = new Shamen(this.$el[0], { dragHandle: '#title' });
         }
 
+        if (options.resizable) {
+            this.apacheChief = new ApacheChief(this.$el[0], { handles: ['BR'] });
+        }
+
         this.overlay = new Duvet(this.$el[0], {
             fixed: options.draggable ? false : true
         });
@@ -44,6 +48,10 @@
 
         if (this.shamen) {
             this.shamen.destroy();
+        }
+
+        if (this.apacheChief) {
+            this.apacheChief.destroy();
         }
 
         Voltron.prototype.destroy.call(this);
