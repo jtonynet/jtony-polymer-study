@@ -2,87 +2,43 @@
 
 <head>
     <title>Polymer Study</title>
-    <style>
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #000;
-            /* opacity: .5;*/
-        }
-        
-        .modal-content {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            margin-top: -100px;
-            margin-left: -200px;
-            width: 400px;
-            height: 200px;
-            background: #fff;
-            padding: 10px;
-            overflow: auto;
-        }
-        
-        .drag-handle {
-            cursor: move
-        }
-        
-        [role="dialog"] {
-            display: none;
-        }
-        
-        [role="dialog"] {
-            width: 400px;
-            height: 200px;
-            position: absolute;
-            border: 1px, solid, #bbb;
-            border-radius: 5px;
-            font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana", "sans-serif";
-        }
-        
-        [role="dialog"] h2 {
-            background: #bbb;
-            font-size: 16px;
-            font-weight: normal;
-            padding: 10px;
-            margin: 3px;
-            border-radius: 5px;
-            padding: 5px;
-            color: #eee;
-        }
-        
-        [role="dialog"] p {
-            margin: 0;
-            padding: 10px;
-            font-size: 12px;
-            color: #333;
-        }
-        
-        [role="dialog"] .apache-chief-resize {
-            /*background: url(jquery-ui-icons.png)*/
-            background: url(/bower_components/jquery-ui/themes/vader/images/ui-icons_666666_256x240.png) -64px -224PX !important;
-            width: 16px !important;
-            height: 16px !important;
-        }
-    </style>
+
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+
+    <template id="dialog">
+        <style>
+        </style>
+
+        <script type="text/javascript">
+        </script>
+
+        <div role="dialog" aria-labelledby="title" aria-describedby="content">
+            <h2 id="title">I am a title</h2>
+            <p id="content">Look at me Now MAN! I am content.</p>
+        </div>
+    </template>
 </head>
 
 <body>
     <div class="modal-overlay"></div>
     <div class="modal-content">I am the modal content. Fear me.</div>
-    <!--div class="draggable">AA
-        <div class="drag-handle">BBBB</div>
-    </div-->
 </body>
 
 </html>
 
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/scripts/libs/BrowserDetection.js"></script>
-<script src="/scripts/libs/Voltron.js"></script>
-<script src="/scripts/libs/Jenga.js"></script>
-<script src="/scripts/libs/Duvet.js"></script>
-<script src="/scripts/libs/Shamen.js"></script>
-<script src="/scripts/libs/ApacheChief.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="scripts/libs/BrowserDetection.js"></script>
+<script src="scripts/libs/Voltron.js"></script>
+<script src="scripts/libs/Jenga.js"></script>
+<script src="scripts/libs/Duvet.js"></script>
+<script src="scripts/libs/Shamen.js"></script>
+<script src="scripts/libs/ApacheChief.js"></script>
+<script src="scripts/widgets/Dialog/Dialog.js"></script>
+
+<script>
+    var dialog = new DialogTemplate({
+        draggable: true,
+        resizable: true
+    });
+    dialog.api.show();
+</script>
