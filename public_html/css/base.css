@@ -24,6 +24,18 @@
             cursor: move
         }
         /****/
+        
+        .component {
+            width: 400px;
+            height: 200px;
+            background: #ccc;
+            display: none;
+        }
+        
+        #title {
+            height: 20px;
+            background: #000;
+        }
         /****/
         
         [role="dialog"] {

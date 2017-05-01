@@ -319,4 +319,4 @@ var Duvet = (function(window, $, jenga) {
 
     return Duvet;
 
-})(window, jQuery, Jenga);
+})(window, jQuery, jenga);

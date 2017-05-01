@@ -8,39 +8,11 @@ var Shamen = (function(window, $) {
         dragHandle: null
     };
 
-    // is the element part of a shadow root
-    function isChildOfDocFragment(el) {
-        var parentNode = el.parentNode;
-
-        while (parentNode.tagName !== 'BODY') {
-            if (parentNode.nodeName.indexOf('fragment') !== -1) {
-                return true;
-            }
-
-            parentNode = parentNode.parentNode;
-        }
-
-        return false;
-    }
-
-    // get offsets
-    function getOffsets(el, isChildOfDocFragment) {
-        if (isChildOfDocFragment) {
-            return {
-                left: el.offsetLeft,
-                top: el.offsetTop
-            };
-        }
-
-        return $(el).offset();
-    }
-
     // create draggable instance
     function Shamen(el, options) {
         this.options = $.extend({}, defaults, options);
         var css = { cursor: (this.options.cursor || 'move') };
 
-        this.isChildOfDocFragment = isChildOfDocFragment(el);
         this.el = el;
         this.$el = $(el);
         this.$dragHandle = this.options.dragHandle ?
@@ -76,7 +48,11 @@ var Shamen = (function(window, $) {
                 var xDiff = e.pageX - mousePos.x;
                 var yDiff = e.pageY - mousePos.y;
                 // get the draggable el current position relative to the document
-                var elPos = getOffsets(self.$el[0], self.isChildOfDocFragment);
+                var el = self.$el[0];
+                var elPos = {
+                    left: el.offsetLeft,
+                    top: el.offsetTop
+                };
 
                 // prevent text selection
                 e.preventDefault();
@@ -116,4 +92,4 @@ var Shamen = (function(window, $) {
 
     return Shamen;
 
-})(window, jQuery)
+})(window, jQuery);

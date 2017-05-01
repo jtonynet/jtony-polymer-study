@@ -1,7 +1,7 @@
 {
     "name": "jtony-polymer-study",
     "version": "1.0.0",
-    "description": "Polymer study for we components use",
+    "description": "Polymer study for we components use basead on https://github.com/WebComponentsBook",
     "main": "server.js",
     "engineStrict": true,
     "engines": {

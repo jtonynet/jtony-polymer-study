@@ -24,6 +24,9 @@
 
     // initialization code
     Voltron.prototype.init = function(options) {
+        console.log("-----------");
+        console.log(options.$el);
+        console.log("-----------");
         this.options = $.extend({}, this.defaults, options);
         this.$el = $(options.$el);
         this.bind();

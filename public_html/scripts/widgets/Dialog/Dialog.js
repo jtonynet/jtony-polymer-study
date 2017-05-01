@@ -16,16 +16,19 @@
         $('body').append(options.$el);
 
         Voltron.call(this, options);
-
         // create overlay instance
         this.overlay = new Duvet(this.$el[0]);
 
         // create a draggable instance
+        console.log('A, z: ');
         if (options.draggable) {
+            console.log(this.$el);
             this.shamen = new Shamen(this.$el[0], {
                 // dialog header is the draghandle
                 dragHandle: '#title'
             });
+        } else {
+            console.log('FOI AQUI Q DEU RUIM');
         }
 
         // create a resizable instance
@@ -40,6 +43,8 @@
 
     Dialog.prototype.init = function(options) {
         // call super method
+        console.log('--options');
+        console.log(options);
         Voltron.prototype.init.call(this, options);
         // position the dialog's root element absolutely
         this.$el.css({ position: 'absolute' });

@@ -5,40 +5,51 @@
 
     <link rel="stylesheet" type="text/css" href="css/base.css" />
 
-    <template id="dialog">
+    <!--template id="dialog">
         <style>
         </style>
-
-        <script type="text/javascript">
-        </script>
 
         <div role="dialog" aria-labelledby="title" aria-describedby="content">
             <h2 id="title">I am a title</h2>
             <p id="content">Look at me Now MAN! I am content.</p>
         </div>
-    </template>
+    </template-->
 </head>
 
 <body>
-    <div class="modal-overlay"></div>
-    <div class="modal-content">I am the modal content. Fear me.</div>
+    <div role="dialog" aria-labelledby="title" aria-describedby="content">
+        <h2 id="title">I am a title</h2>
+        <p id="content">Look at me! I am content.</p>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="scripts/libs/BrowserDetection.js"></script>
+    <script src="scripts/libs/Voltron.js"></script>
+    <script src="scripts/libs/Jenga.js"></script>
+    <script src="scripts/libs/Duvet.js"></script>
+    <script src="scripts/libs/Shamen.js"></script>
+    <script src="scripts/libs/ApacheChief.js"></script>
+    <script src="scripts/widgets/Dialog/Dialog.js"></script>
+
+    <script>
+        (function() {
+            var dialog = new Dialog({
+                $el: '[role="dialog"]',
+                draggable: true,
+                resizable: true,
+                events: {
+                    'click [data-action]': function(e) {
+                        var action = $(e.currentTarget).attr('data-action');
+                        e.preventDefault();
+                        this[action]();
+                    }
+                }
+            });
+
+            dialog.show();
+        })();
+    </script>
+    <!--div class="modal-overlay"></div>
+    <div class="modal-content">I am the modal content. Fear me.</div-->
 </body>
 
 </html>
-
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="scripts/libs/BrowserDetection.js"></script>
-<script src="scripts/libs/Voltron.js"></script>
-<script src="scripts/libs/Jenga.js"></script>
-<script src="scripts/libs/Duvet.js"></script>
-<script src="scripts/libs/Shamen.js"></script>
-<script src="scripts/libs/ApacheChief.js"></script>
-<script src="scripts/widgets/Dialog/Dialog.js"></script>
-
-<script>
-    var dialog = new DialogTemplate({
-        draggable: true,
-        resizable: true
-    });
-    dialog.api.show();
-</script>
