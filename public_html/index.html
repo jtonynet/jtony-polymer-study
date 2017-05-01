@@ -28,15 +28,53 @@
         .drag-handle {
             cursor: move
         }
+        
+        [role="dialog"] {
+            display: none;
+        }
+        
+        [role="dialog"] {
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            border: 1px, solid, #bbb;
+            border-radius: 5px;
+            font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana", "sans-serif";
+        }
+        
+        [role="dialog"] h2 {
+            background: #bbb;
+            font-size: 16px;
+            font-weight: normal;
+            padding: 10px;
+            margin: 3px;
+            border-radius: 5px;
+            padding: 5px;
+            color: #eee;
+        }
+        
+        [role="dialog"] p {
+            margin: 0;
+            padding: 10px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        [role="dialog"] .apache-chief-resize {
+            /*background: url(jquery-ui-icons.png)*/
+            background: url(/bower_components/jquery-ui/themes/vader/images/ui-icons_666666_256x240.png) -64px -224PX !important;
+            width: 16px !important;
+            height: 16px !important;
+        }
     </style>
 </head>
 
 <body>
     <div class="modal-overlay"></div>
     <div class="modal-content">I am the modal content. Fear me.</div>
-    <div class="draggable">AA
+    <!--div class="draggable">AA
         <div class="drag-handle">BBBB</div>
-    </div>
+    </div-->
 </body>
 
 </html>
@@ -47,11 +85,4 @@
 <script src="/scripts/libs/Jenga.js"></script>
 <script src="/scripts/libs/Duvet.js"></script>
 <script src="/scripts/libs/Shamen.js"></script>
-
-<script>
-    $('document').ready(function() {
-        $('draggable').on('mousedown.draggable,', 'drag-handle', function(e) {
-
-        });
-    });
-</script>
+<script src="/scripts/libs/ApacheChief.js"></script>
